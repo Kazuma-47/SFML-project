@@ -9,6 +9,6 @@ class Obstacle : public Entity
 		
 	public:
 		Obstacle(std::string textureFilePath, Vector2 startPosition, float movementSpeed) : Entity(textureFilePath, startPosition, movementSpeed) {};
-		void Update();
+		void Update(float deltaTime);
 };
 

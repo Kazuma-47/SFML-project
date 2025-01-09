@@ -3,7 +3,7 @@
 #include "Entity.h"
 #include "Vector2.h"
 
-void Obstacle::Update()
+void Obstacle::Update(float deltaTime)
 {
-	//Move(Vector2::VectorDown());
+	Move(Vector2::VectorDown() , deltaTime);
 }

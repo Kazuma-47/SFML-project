@@ -8,7 +8,7 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 900), "Racing game");
 
-    Entity player(".\\Assets\\SpaceShip.png", Vector2(350.0f, 750.0f) , 1.0f);
+    Entity player(".\\Assets\\SpaceShip.png", Vector2(350.0f, 750.0f) , 200.0f);
     player.SetSpriteScale(0.050f);
     player.SetPosition(player.GetPosition());
     WaveSpawner spawner = WaveSpawner(1, 3, 800, 10);
@@ -43,14 +43,14 @@ int main()
         else if (sf::Event::KeyReleased) {
             playerInput = Vector2::VectorZero();
         }
-     
-        for (Obstacle& obstacle : spawner.GetObjects()) {
-            window.draw(obstacle.GetSprite());
-            obstacle.Update(); 
-        }
         #pragma endregion
 
-        //Player.Move(PlayerInput);
+        for (Obstacle& obstacle : spawner.GetObjects()) {
+            window.draw(obstacle.GetSprite());
+            obstacle.Update(deltaTime);
+        }
+
+        player.Move(playerInput , deltaTime);
       
         window.clear();
         window.draw(player.GetSprite());

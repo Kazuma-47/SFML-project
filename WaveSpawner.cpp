@@ -28,7 +28,7 @@ void WaveSpawner::SpawnObstacle()
 {
 	while (currentObjectCount != objectAmmount) {
 		int randomLocation = GetRandomInterval(40, screenWidth);	 
-		Obstacle object(".\\Assets\\Asteroid.png", Vector2((randomLocation, 0)), 0.0f);
+		Obstacle object(".\\Assets\\Asteroid.png", Vector2((randomLocation, 0)), 200.0f);
 	
 		objects.push_back(object);
 		currentObjectCount++;
