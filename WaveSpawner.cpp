@@ -1,4 +1,3 @@
-#pragma once
 #include "WaveSpawner.h"
 #include "Entity.h"
 #include "Vector2.h"
@@ -35,7 +34,7 @@ void WaveSpawner::SpawnObstacle()
 {
 	while (currentObjectCount != objectAmmount) {
 		int randomLocation = GetRandom(40, screenWidth);	 
-		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 800.0f);
+		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 100.0f);
 		object.SetSpriteScale(0.05f);
 	
 		objects.push_back(object);
