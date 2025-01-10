@@ -22,8 +22,8 @@ void Entity::SetSpriteScale(float T) {
     sprite.setScale(T, T);
 }
 
-sf::Sprite Entity::GetSprite() {
-   return sprite;
+sf::Sprite& Entity::GetSprite() {
+    return sprite;
 }
 
 void Entity::SetPosition(Vector2 newPos) {
@@ -37,13 +37,9 @@ float Entity::GetEntitySpeed() {
 
 void Entity::Move(Vector2 step, float deltaTime)
 {
-    Vector2 scaledStep = step * deltaTime; // Scale movement by deltaTime
+    Vector2 scaledStep = step * deltaTime; 
     SetPosition(scaledStep + position);
     sprite.move(scaledStep.x, scaledStep.y);
-
-    std::cout << "Entity moved to position: ("
-        << position.x << ", "
-        << position.y << ")" << std::endl;
 }
 
 Vector2 Entity::GetPosition(){

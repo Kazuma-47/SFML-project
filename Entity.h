@@ -12,7 +12,7 @@ class Entity
 		
 	public:
 		Entity(std::string textureFilePath, Vector2 startPosition , float movementSpeed);
-		sf::Sprite GetSprite();
+		sf::Sprite& GetSprite();
 		void SetSpriteScale(float T);
 		void SetPosition(Vector2 newPos);
 		float GetEntitySpeed();

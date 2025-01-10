@@ -18,20 +18,29 @@ WaveSpawner::WaveSpawner(int minTimerValue, int maxTimerValue , int screenWidth 
 	this->screenWidth = screenWidth;
 	minTimer = minTimerValue;
 	maxTimer = maxTimerValue;
-	spawnInterval = GetRandomInterval(minTimer, maxTimer);
+	spawnInterval = GetRandom(minTimer, maxTimer);
 	this->objectAmmount = objectAmmount;
 
 	SpawnObstacle();
 }
 
+void WaveSpawner::Update(float deltaTime) {
+	currentTimer += deltaTime * 1000; 
+	if (currentTimer >= spawnInterval && currentObjectCount < objectAmmount) {
+		SpawnObstacle();
+	}
+}
+
 void WaveSpawner::SpawnObstacle()
 {
 	while (currentObjectCount != objectAmmount) {
-		int randomLocation = GetRandomInterval(40, screenWidth);	 
-		Obstacle object(".\\Assets\\Asteroid.png", Vector2((randomLocation, 0)), 200.0f);
+		int randomLocation = GetRandom(40, screenWidth);	 
+		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 800.0f);
+		object.SetSpriteScale(0.05f);
 	
 		objects.push_back(object);
 		currentObjectCount++;
+		currentTimer = 0;
 	}
 }
 
@@ -39,10 +48,10 @@ void WaveSpawner::SetTimerValue(int minTimerValue, int maxTimerValue)
 {
 	minTimer = minTimerValue;
 	maxTimer = maxTimerValue;
-	spawnInterval = GetRandomInterval(minTimer, maxTimer);
+	spawnInterval = GetRandom(minTimer, maxTimer);
 }
 
-int WaveSpawner::GetRandomInterval(int minTimerValue, int maxTimerValue) 
+int WaveSpawner::GetRandom(int minTimerValue, int maxTimerValue) 
 {
 	std::random_device rd;
 	std::mt19937 gen(rd());

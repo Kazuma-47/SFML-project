@@ -20,7 +20,8 @@ class WaveSpawner
 		WaveSpawner(int minTimerValue, int maxTimerValue, int screenWidth ,int objectAmmount);
 		void SpawnObstacle();
 		void SetTimerValue(int minTimerValue, int maxTimerValue);
-		int GetRandomInterval(int minTimerValue, int maxTimerValue);
+		int GetRandom(int minTimerValue, int maxTimerValue);
 		std::vector<Obstacle>& GetObjects();
+		void Update(float deltaTime);
 };
 

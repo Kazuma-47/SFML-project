@@ -22,8 +22,7 @@ Vector2& Vector2::operator=(const Vector2& newVector) {
 	return *this;
 }
 
-Vector2 Vector2::operator*(float scalar) const
-{
+Vector2 Vector2::operator*(float scalar) const {
 	return Vector2(x * scalar, y * scalar);
 }
 
@@ -35,7 +34,6 @@ Vector2 const Vector2::VectorDown() {
 	return Vector2(0.0f, -1.0f);
 }
 
-Vector2 const Vector2::VectorUp()
-{
+Vector2 const Vector2::VectorUp() {
 	return Vector2(0.0f, 1.0f);
 }

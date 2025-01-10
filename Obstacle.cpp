@@ -5,5 +5,5 @@
 
 void Obstacle::Update(float deltaTime)
 {
-	Move(Vector2::VectorDown() , deltaTime);
+	Move(Vector2::VectorUp() , deltaTime);
 }
