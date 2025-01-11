@@ -3,6 +3,7 @@
 #include "Entity.h"
 #include "Vector2.h"
 #include "WaveSpawner.h"
+#include "ScoreManager.h"
 
 int main()
 {
@@ -10,8 +11,9 @@ int main()
 
     Entity player(".\\Assets\\SpaceShip.png", Vector2(350.0f, 750.0f), 500.0f);
     player.SetSpriteScale(0.05f);
+    ScoreManager scoreManager = ScoreManager(10);
 
-    WaveSpawner spawner(3, 5, 800, 10); 
+    WaveSpawner spawner(3, 5, 800, 5); 
 
     Vector2 playerInput;
     sf::Clock clock;
@@ -51,6 +53,12 @@ int main()
         spawner.Update(deltaTime);
         for (Obstacle& obstacle : spawner.GetObjects()) {
             obstacle.Update(deltaTime);
+        }
+        for (Obstacle& obstacle : spawner.GetObjects()) {
+            if (obstacle.CheckCollision(player)) {
+                std::cout << "Collision occurred!" << std::endl;
+                // Handle the collision (e.g., stop the game, reduce health, etc.)
+            }
         }
         #pragma endregion
 

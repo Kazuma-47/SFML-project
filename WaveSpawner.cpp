@@ -24,7 +24,7 @@ WaveSpawner::WaveSpawner(int minTimerValue, int maxTimerValue , int screenWidth 
 }
 
 void WaveSpawner::Update(float deltaTime) {
-	currentTimer += deltaTime * 1000; 
+	currentTimer += deltaTime; 
 	if (currentTimer >= spawnInterval && currentObjectCount < objectAmmount) {
 		SpawnObstacle();
 	}
