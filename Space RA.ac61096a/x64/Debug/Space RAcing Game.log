@@ -1,6 +1,0 @@
-﻿  WaveSpawner.cpp
-C:\Users\zcitz\Documents\School\sFML\Space RAcing Game\SFML-project\Entity.h(2,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-  (compiling source file 'WaveSpawner.cpp')
-  
-C:\Users\zcitz\Documents\School\sFML\Space RAcing Game\SFML-project\WaveSpawner.cpp(31,69): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  Space RAcing Game.vcxproj -> C:\Users\zcitz\Documents\School\sFML\Space RAcing Game\SFML-project\x64\Debug\Space RAcing Game.exe
