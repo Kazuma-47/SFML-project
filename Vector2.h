@@ -1,8 +1,7 @@
 #pragma once
+
 class Vector2
 {
-	private:
-
 	public:
 		float x, y;
 		Vector2(float valueX = 0.0f , float valueY = 0.0f);

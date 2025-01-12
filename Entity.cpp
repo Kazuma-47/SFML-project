@@ -1,7 +1,4 @@
 #include "Entity.h"
-#include <SFML/Graphics.hpp>
-#include "Vector2.h"
-#include <iostream>
 
 /// <summary>
 /// neemt de locatie van de texture voor de sprite van het object en de start locatie en 
@@ -18,15 +15,16 @@ Entity::Entity(std::string textureFilePath, Vector2 startPosition , float moveme
     SetPosition(startPosition);
 }
 
-void Entity::SetSpriteScale(float T) {
-    sprite.setScale(T, T);
+void Entity::SetSpriteScale(float scale) {
+    sprite.setScale(scale, scale);
 }
 
 sf::Sprite& Entity::GetSprite() {
     return sprite;
 }
 
-void Entity::SetPosition(Vector2 newPos) {
+void Entity::SetPosition(Vector2 newPos) 
+{
     position = newPos;
     sprite.setPosition(position.x, position.y);
 }
@@ -42,6 +40,3 @@ void Entity::Move(Vector2 step, float deltaTime)
     sprite.move(scaledStep.x, scaledStep.y);
 }
 
-Vector2 Entity::GetPosition(){
-    return position;
-}

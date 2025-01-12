@@ -9,14 +9,13 @@ class WaveSpawner
 		int spawnInterval;
 		int objectAmmount,
 			currentObjectCount = 0;
-		
 		std::vector<Obstacle> objects;
 		int minTimer,
-			maxTimer,
-			currentTimer;
-
+			maxTimer;
+		float currentTimer;
 		int screenWidth;
-	public:
+
+public:
 		WaveSpawner(int minTimerValue, int maxTimerValue, int screenWidth ,int objectAmmount);
 		void SpawnObstacle();
 		void SetTimerValue(int minTimerValue, int maxTimerValue);

@@ -5,8 +5,6 @@
 
 class Obstacle : public Entity
 {
-	private:
-		
 	public:
 		Obstacle(std::string textureFilePath, Vector2 startPosition, float movementSpeed) : Entity(textureFilePath, startPosition, movementSpeed) {};
 		bool CheckCollision(Entity& player);

@@ -15,9 +15,7 @@
 WaveSpawner::WaveSpawner(int minTimerValue, int maxTimerValue , int screenWidth , int objectAmmount)
 {
 	this->screenWidth = screenWidth;
-	minTimer = minTimerValue;
-	maxTimer = maxTimerValue;
-	spawnInterval = GetRandom(minTimer, maxTimer);
+	SetTimerValue(minTimerValue, maxTimerValue);
 	this->objectAmmount = objectAmmount;
 
 	SpawnObstacle();
@@ -25,29 +23,37 @@ WaveSpawner::WaveSpawner(int minTimerValue, int maxTimerValue , int screenWidth 
 
 void WaveSpawner::Update(float deltaTime) {
 	currentTimer += deltaTime; 
-	if (currentTimer >= spawnInterval && currentObjectCount < objectAmmount) {
+	if (currentTimer >= spawnInterval) 
+	{
 		SpawnObstacle();
+		SetTimerValue(minTimer, maxTimer);
+		std::cout << currentObjectCount << "wave count: " << objectAmmount ;
 	}
 }
 
 void WaveSpawner::SpawnObstacle()
 {
-	while (currentObjectCount != objectAmmount) {
-		int randomLocation = GetRandom(40, screenWidth);	 
+	for (int i = currentObjectCount; i < objectAmmount; ++i) {
+		int randomLocation = GetRandom(40, screenWidth);
 		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 100.0f);
 		object.SetSpriteScale(0.05f);
-	
 		objects.push_back(object);
-		currentObjectCount++;
-		currentTimer = 0;
 	}
 }
 
+/// <summary>
+/// zet de timer van de volgende wave maar word ook gebruikt om te resettten 
+/// </summary>
+/// <param name="minTimerValue">minimale value voor de timer</param>
+/// <param name="maxTimerValue">maximale value voor de timer</param>
 void WaveSpawner::SetTimerValue(int minTimerValue, int maxTimerValue)
 {
 	minTimer = minTimerValue;
 	maxTimer = maxTimerValue;
 	spawnInterval = GetRandom(minTimer, maxTimer);
+	currentTimer = 0;
+	currentObjectCount = 0;
+	std::cout << "timer reset";
 }
 
 int WaveSpawner::GetRandom(int minTimerValue, int maxTimerValue) 
