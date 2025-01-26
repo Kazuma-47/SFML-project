@@ -1,6 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
-
+#include<iostream>
 class ScoreManager
 {
 	private:
@@ -10,9 +10,9 @@ class ScoreManager
 		sf::Font textFont;
 
 	public:
-		ScoreManager(float pointValue, const std::string& fontFilePath);
+		ScoreManager(float pointValue, const sf::Font& font);
 		void SetPoints(float pointValue);
 		void AddPoints();
-		float GetScore()const;
+		int GetScore()const;
 		void Draw(sf::RenderWindow& window)const;
 };

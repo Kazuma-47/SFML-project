@@ -1,11 +1,8 @@
 #include "ScoreManager.h"
-#include <iostream>
 
-ScoreManager::ScoreManager(float pointValue, const std::string& fontFilePath)
+ScoreManager::ScoreManager(float pointValue, const sf::Font& font)
 {
-	if (!textFont.loadFromFile(fontFilePath)){
-		std::cerr <<"font not found for score UI";
-	}
+	textFont = font;
 	scoreUI.setPosition(10.0f, 10.0f);
 	scoreUI.setFont(textFont);
 	scoreUI.setCharacterSize(20);
@@ -20,7 +17,8 @@ void ScoreManager::SetPoints(float pointValue) {
 	points = pointValue;
 }
 
-void ScoreManager::AddPoints() {
+void ScoreManager::AddPoints() 
+{
 	score += points;
 	scoreUI.setString("Score: " + std::to_string(static_cast<int>(score)));
 }
@@ -29,6 +27,6 @@ void ScoreManager::Draw(sf::RenderWindow& window) const {
 	window.draw(scoreUI);
 }
 
-float ScoreManager::GetScore()const {
+int ScoreManager::GetScore()const {
 	return score;
 }

@@ -1,9 +1,4 @@
 #include "WaveSpawner.h"
-#include "Entity.h"
-#include "Vector2.h"
-#include <cstdlib> 
-#include <random>
-#include <iostream>
 
 /// <summary>
 /// set the timer door een nummer neemt binnen de minTimerValue en de maxTimerValue en gebruikt dat om objecten met een interval te spawnen
@@ -21,21 +16,32 @@ WaveSpawner::WaveSpawner(int minTimerValue, int maxTimerValue , int screenWidth 
 	SpawnObstacle();
 }
 
+/// <summary>
+/// behandel wat er elke frame moet gebeuren om de wavespawner werkend te houden
+/// </summary>
 void WaveSpawner::Update(float deltaTime) {
 	currentTimer += deltaTime; 
 	if (currentTimer >= spawnInterval) 
 	{
 		SpawnObstacle();
 		SetTimerValue(minTimer, maxTimer);
-		std::cout << currentObjectCount << "wave count: " << objectAmmount ;
+	}
+}
+
+void WaveSpawner::RemoveObject(size_t index)
+{
+	if (index < objects.size()) {
+		objects[index].~Obstacle();
+
+		objects.erase(objects.begin() + index);
 	}
 }
 
 void WaveSpawner::SpawnObstacle()
 {
 	for (int i = currentObjectCount; i < objectAmmount; ++i) {
-		int randomLocation = GetRandom(40, screenWidth);
-		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 100.0f);
+		float randomLocation = GetRandom(40, screenWidth);
+		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 5.0f);
 		object.SetSpriteScale(0.05f);
 		objects.push_back(object);
 	}
@@ -53,7 +59,6 @@ void WaveSpawner::SetTimerValue(int minTimerValue, int maxTimerValue)
 	spawnInterval = GetRandom(minTimer, maxTimer);
 	currentTimer = 0;
 	currentObjectCount = 0;
-	std::cout << "timer reset";
 }
 
 int WaveSpawner::GetRandom(int minTimerValue, int maxTimerValue) 

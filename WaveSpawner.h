@@ -2,7 +2,9 @@
 #include "Vector2.h"
 #include "Entity.h"
 #include "Obstacle.h"
-
+#include <cstdlib> 
+#include <random>
+#include <iostream>
 class WaveSpawner
 {
 	private:
@@ -22,5 +24,6 @@ public:
 		int GetRandom(int minTimerValue, int maxTimerValue);
 		std::vector<Obstacle>& GetObjects();
 		void Update(float deltaTime);
+		void RemoveObject(size_t index);
 };
 
