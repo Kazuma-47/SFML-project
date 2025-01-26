@@ -41,7 +41,8 @@ void WaveSpawner::SpawnObstacle()
 {
 	for (int i = currentObjectCount; i < objectAmmount; ++i) {
 		float randomLocation = GetRandom(40, screenWidth);
-		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), 5.0f);
+		float randomSPeed = GetRandom(4, 9);
+		Obstacle object(".\\Assets\\Asteroid.png", Vector2(randomLocation, -50.0f), randomSPeed);
 		object.SetSpriteScale(0.05f);
 		objects.push_back(object);
 	}
